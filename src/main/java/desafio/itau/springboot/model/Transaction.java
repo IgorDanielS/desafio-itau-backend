@@ -9,7 +9,7 @@ import java.time.OffsetDateTime;
 @AllArgsConstructor
 public class Transaction {
 
-    private double valor;
+    private Double valor;
     private OffsetDateTime dataHora;
 
 }

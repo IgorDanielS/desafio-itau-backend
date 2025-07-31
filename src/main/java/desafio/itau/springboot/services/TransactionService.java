@@ -1,5 +1,6 @@
 package desafio.itau.springboot.services;
 
+import desafio.itau.springboot.exceptions.BadRequestException;
 import desafio.itau.springboot.exceptions.UnprocessableEntityException;
 import desafio.itau.springboot.model.Transaction;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,11 @@ public class TransactionService {
 
     private final Queue<Transaction> transactions = new ConcurrentLinkedQueue<>();
 
-    public void addTransaction(Transaction transaction) throws UnprocessableEntityException {
+    public void addTransaction(Transaction transaction) throws UnprocessableEntityException, BadRequestException{
+        if(transaction.getValor() == null || transaction.getDataHora() == null) {
+            throw new BadRequestException();
+        }
+
         if(transaction.getDataHora().isAfter(OffsetDateTime.now()) || transaction.getValor() < 0) {
             throw new UnprocessableEntityException();
         }
