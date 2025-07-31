@@ -9,10 +9,10 @@ import java.time.OffsetDateTime;
 @Getter
 public class TransactionRequest {
 
-    @NotEmpty
+    @NotNull
     private Double valor;
 
-    @NotEmpty
+    @NotNull
     private OffsetDateTime  dataHora;
 
 }

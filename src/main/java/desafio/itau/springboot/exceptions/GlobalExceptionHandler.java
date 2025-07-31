@@ -1,5 +1,6 @@
 package desafio.itau.springboot.exceptions;
 
+import jakarta.validation.UnexpectedTypeException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -11,6 +12,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> handleValidation(MethodArgumentNotValidException ex) {
+        return ResponseEntity.badRequest().build();
+    }
+
+    @ExceptionHandler(UnexpectedTypeException.class)
+    public ResponseEntity<?> handleValidation(UnexpectedTypeException ex) {
         return ResponseEntity.badRequest().build();
     }
 
