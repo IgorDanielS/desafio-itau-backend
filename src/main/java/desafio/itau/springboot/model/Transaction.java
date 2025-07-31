@@ -1,22 +1,15 @@
 package desafio.itau.springboot.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.time.OffsetDateTime;
 
+@Getter
+@AllArgsConstructor
 public class Transaction {
 
     private double valor;
     private OffsetDateTime dataHora;
 
-    public Transaction(double valor, OffsetDateTime dataHora) {
-        this.valor = valor;
-        this.dataHora = dataHora;
-    }
-
-    public double getValor(){
-        return this.valor;
-    }
-
-    public OffsetDateTime getDataHora() {
-        return this.dataHora;
-    }
 }
